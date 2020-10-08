@@ -1,0 +1,165 @@
+#g-i-plrs td{
+    padding: 0px 15px 0px 15px;
+}
+#g-i-plrs table{
+    width:100%;
+    border:none;
+}
+#g-i-plrs tr{
+  text-align:center;
+  /*border-bottom: 2px solid rgb(255, 255, 255);*/
+}
+#g-i-plrs{
+  padding:0px;
+  overflow-y:auto;
+  overflow-x:auto;
+  border:none;
+}
+#g-i-plrs tbody tr:nth-child(even) {
+    background: #bdbdbd;
+}
+#g-i-plrs tbody tr:nth-child(odd) {
+    background: #e0e0e0;
+}
+#g-i-plrs tbody tr:nth-child(1) {
+    background: #ffea00;
+}
+#g-i-plrs tbody tr:nth-child(2) {
+    background: #cfd8dc;
+}
+#g-i-plrs tbody tr:nth-child(3) {
+    background: #a1887f;
+}
+#g-i-table-h {
+    background: white;
+    color: rgb(80, 80, 80);
+    width: 100vw;
+    border:none;
+}
+th{
+  border: solid 1px black;
+  padding: 2px 5px;
+}
+td{
+  padding: 0px 5px 0px 5px;
+  border:solid 1px black;
+}
+#games table{
+    width:100%;
+    border:none;
+}
+#games tr{
+    text-align:center;
+    /*border-bottom: 2px solid rgb(255, 255, 255);*/
+}
+#games{
+  padding:2px;
+  overflow-y:auto;
+  border:none;
+}
+#games tbody tr:nth-child(even) {
+    background: #bdbdbd;
+}
+#games tbody tr:nth-child(odd) {
+    background: #e0e0e0;
+}
+#games tbody tr:hover {
+    background: #9e9e9e;
+    cursor: pointer!important;
+}
+#g-table-h {
+    background: white;
+    color: rgb(80, 80, 80);
+    width: 100vw;
+    border:none;
+}
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+.correct{
+  background-color: green!important;
+}
+.incorrect{
+  background-color: red!important;
+}
+.bonus-correct{
+  background-color: rgb(3, 68, 0)!important;
+}
+.bonus-incorrect{
+  background-color: rgb(75, 0, 0)!important;
+}
+#team1{
+  float:left;
+}
+#team2{
+  float:right;
+}
+#team1:after{
+  content: "";
+  clear: both;
+}
+#team2:after{
+  content: "";
+  clear: both;
+}
+#team12{
+  float:left;
+}
+#team22{
+  float:right;
+}
+#team12:after{
+  content: "";
+  clear: both;
+}
+#team22:after{
+  content: "";
+  clear: both;
+}
+#jump-btn,#start-btn{
+ /* background:#4CAF50;*/
+  width:100%;
+  position:fixed;
+  bottom:0%;
+  left:0px;
+  height:20%;
+}
+/*
+#jump-btn:hover{
+  background:rgb(90, 207, 93);
+}
+#jump-btn:active{
+  background:rgb(69, 156, 72);
+  transition: all 0.1s linear;
+}*/
+.kcss-main-footer{
+  display:none;
+}
+button.kcss-ripple-btn:focus:not(:active)::after {
+  animation: ripple 0.21s ease-out;
+}
+#scoresheet{
+  margin:auto;
+  width:100%;
+  background:white;
+}
+#scoresheet tr td{
+  padding:auto;
+  margin:0px!Important;
+}
+#scoresheet2{
+  margin:auto;
+  width:100%;
+  background:white;
+}
+#scoresheet2 tr td{
+  padding:auto;
+  margin:0px!Important;
+}
+.g-i-b{
+  padding:5px
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="manifest" href="/manifest.json">
+  <title>Nazarene Bible Quizzing Online</title>
+  <meta name="description" content="a online bible quizzing website using the nazarene style of quizzing">
+  <meta name="keywords" content="bible, quizzing, bible quiz, nazarene, nazarene bible quizzing online">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Nazarene Bible Quizzing Online">
+  <meta name="theme-color" content="#fafafa" />
+  <!--  <link rel="preload" href="/gethebrews" as="text">
+    import the webpage's stylesheet -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/voicequizzing.css">
+  <script>
+    if (location.protocol !== "https:") {
+      location.protocol = "https:"
+    }
+  </script><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131092423-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-131092423-2');
+</script>
+    <script src="/js/plain/raw/addlogin.js" charset="utf-8" defer></script>
+    <script src="/js/plain/raw/login.js" charset="utf-8" defer></script>
+    <script src="/js/plain/raw/nav.js" charset="utf-8" defer></script>
+    <script src="/js/plain/raw/offline.js" charset="utf-8" defer></script>
+    <script src="/js/plain/raw/voicequiz.js" charset="utf-8" defer></script>
+</head>
+
+<body>
+    <header id="nav">
+      <div id="normal-nav">
+        <button style="width:50px;height:20px;" id="navbtn">
+          <i class="material-icons md-24" style="color:black;font-size:30px;">menu</i>
+        </button>
+      </div>
+      <div id="moble-nav">
+        <button style="width:100%;" id="navbtn">
+          <i class="material-icons md-24" style="color:black;font-size:30px;"
+            >menu</i
+          >
+        </button>
+      </div>
+    </header>
+    <side-nav id="mySidenav">
+      <div id = "subnav" style = "display:none">
+        
+      </div>
+    </side-nav>
+  <main class = "page" id="quizzing">
+    <!--<script src="/js/offline.js" defer></script>-->
+    <div id="status"></div>
+    <div id="settings">
+      <div id="ch-set">
+        <label for="ch-select">chapters:</label>
+        <select id="ch-select">
+          <option value="">--Please choose an option--</option>
+          <option value="h1">hebrews 1</option>
+          <option value="h2">hebrews 2</option>
+          <option value="h3">hebrews 3</option>
+          <option value="h4">hebrews 4</option>
+          <option value="h5">hebrews 5</option>
+          <option value="h6">hebrews 6</option>
+          <option value="h7">hebrews 7</option>
+          <option value="h8">hebrews 8</option>
+          <option value="h9">hebrews 9</option>
+          <option value="h10">hebrews 10</option>
+          <option value="h11">hebrews 11</option>
+          <option value="h12">hebrews 12</option>
+          <option value="h13">hebrews 13</option>
+          <option value="1p1">1peter 1</option>
+          <option value="1p2">1peter 2</option>
+          <option value="1p3">1peter 3</option>
+          <option value="1p4">1peter 4</option>
+          <option value="1p5">1peter 5</option>
+          <option value="2p1">2peter 1</option>
+          <option value="2p2">2peter 2</option>
+          <option value="2p3">2peter 3</option>
+        </select><br>
+        <label for="ch-type">type of challenge:</label>
+        <select id="ch-type">
+          <option value="">--Please choose an option--</option>
+          <option value="q">quote</option>
+          <option value="c">completion</option>
+        </select><br>
+        <label for="ch-prompt">do you want a prompt:</label>
+        <select id="ch-prompt">
+          <option value="">--Please choose an option--</option>
+          <option value="y">yes</option>
+          <option value="n">no</option>
+        </select>
+        <br>
+        <button id = "type-start-btn" class = "kcss-btn-green kcss-ripple-btn kcss-btn" >start</button>
+      </div>
+    </div>
+    <div id = "t-q">
+      <h2 id="refrence">hebrews 1:1</h2>
+      <h2 id="score"></h2>
+      <h2 id="timer"></h2>
+      <div id="verse"></div>
+    </div>
+    <div id = "done">
+      <h2 id ="score2"></h2>
+      <h2 id ="timer2"></h2>
+    </div>
+  </main>
+
+  <footer class="kcss-main-footer"><span class="kcss-copyright"><a href="https://repl.it/@Koalaknightmi" target="_blank">Copyright &copy; 2018 Koalastrikermi/koalaknightmi</a></span></footer>
+
+</body>
+</html>

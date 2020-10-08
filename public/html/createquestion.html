@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="manifest" href="/manifest.json">
+    <title>Nazarene Bible Quizzing Online</title>
+    <meta name="description" content="a online bible quizzing website using the nazarene style of quizzing">
+    <meta name="keywords" content="bible, quizzing, bible quiz, nazarene, nazarene bible quizzing online">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+    <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Nazarene Bible Quizzing Online">
+    <meta name="theme-color" content="#fafafa" />
+    <!--  <link rel="preload" href="/gethebrews" as="text">
+      import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/css/style.css">
+    <script>
+      if (location.protocol !== "https:") {
+        location.protocol = "https:"
+      }
+    </script>
+    <script src="/js/plain/raw/nav.js" charset="utf-8" defer></script><!-- <script src="/js/plain/raw/addlogin.js" charset="utf-8" defer></script>
+    <script src="/js/plain/raw/login.js" charset="utf-8" defer></script>
+    
+    <script src="/js/plain/raw/offline.js" charset="utf-8" defer></script>
+    import the webpage's client-side javascript file 
+      <script src="/js/client.js" defer></script>-->
+  </head><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131092423-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-131092423-2');
+</script>
+  <body>
+    <header id="nav">
+      <div id="normal-nav">
+        <button style="width:50px;height:20px;" id="navbtn">
+          <i class="material-icons md-24" style="color:black;font-size:30px;">menu</i>
+        </button>
+      </div>
+      <div id="moble-nav">
+        <button style="width:100%;" id="navbtn">
+          <i class="material-icons md-24" style="color:black;font-size:30px;"
+            >menu</i
+          >
+        </button>
+      </div>
+    </header>
+    <side-nav id="mySidenav">
+      <div id = "subnav" style = "display:none">
+        
+      </div>
+    </side-nav>
+    <main class = "page" id="home">
+      <div id="status"></div>
+      <form id = "question-form" class="form-example">
+        <div class="form-example">
+          <label for="question">Enter question: </label>
+          <input type="text" name="question" id="question" required>
+        </div>
+        <div class="form-example">
+          <label for="answer">Enter answer: </label>
+          <input type="text" name="answer" id="answer" required>
+        </div>
+        <div class="form-example">
+          <label for="refrence">Enter refrence: </label>
+          <input type="text" name="refrence" id="refrence" required>
+        </div>
+        <label for="t-select">type:</label>
+        <select id="t-select">
+          <option value="">--Please choose an option--</option>
+          <option value="General">General</option>
+          <option value="AccordingTo">According To</option>
+          <option value="Situation">Situation</option>
+          <option value="Inwhatbookandchapter">In what book and chapter</option>
+          <option value="Context">Context</option>
+        </select>
+        <div class="form-example">
+          <input type="submit" value="Submit">
+        </div>
+      </form>
+      <div id = "success"></div>
+      <script>
+        function postData(url, data, then) {
+          return new Promise(function (resolve, reject) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", url);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onload = function () {
+              return resolve(xhr.responseText);
+            };
+            xhr.onerror = function () {
+              return reject(xhr.statusText);
+            };
+            xhr.send(data);
+          }).then(function (successMessage) {
+            then(successMessage);
+          }).catch(function (error) {
+            console.log("no internet doing default", error, JSON.stringify(data));
+            //location.reload();
+          });
+        }
+        var s = document.getElementById("success")
+        var form = document.getElementById("question-form");
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var answer = document.getElementById("answer").value;
+          var question = document.getElementById("question").value;
+          var tselect = document.getElementById("t-select").value;
+          var refrence = document.getElementById("refrence").value;
+          var creator = JSON.parse(localStorage.getItem("koalastrikermi-bbqo-userdata")).name;
+          var data = {
+            answer:answer,
+            creator:creator,
+            type:tselect,
+            question:question,
+            refrence:refrence
+          }
+          data = JSON.stringify(data)
+          postData("/createquestion",data,function(response){
+            s.innerText = "success"
+            s.style.background = "green"
+          })
+        });
+      </script>
+    </main>
+ </body>
+</html>

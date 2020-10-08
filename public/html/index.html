@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <title>Nazarene Bible Quizzing Online</title>
+    <meta
+      name="description"
+      content="a online bible quizzing website using the nazarene style of quizzing"
+    />
+    <meta
+      name="keywords"
+      content="bible, quizzing, bible quiz, nazarene, nazarene bible quizzing online"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon.ico"
+    />
+    <link
+      rel="mask-icon"
+      href="/images/safari-pinned-tab.svg"
+      color="#941b1b"
+    />
+    <meta
+      name="google-site-verification"
+      content="5vhnCNIgvicKCqQ27AQ1tv0T-xPYBX_YAMahjfGxWh0"
+    />
+    <meta name="msapplication-TileColor" content="#941b1b" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta
+      name="apple-mobile-web-app-title"
+      content="Nazarene Bible Quizzing Online"
+    />
+    <meta name="theme-color" content="#941b1b" />
+    <!--  <link rel="preload" href="/gethebrews" as="text">
+      import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <script>
+      if (location.protocol !== "https:") {
+        location.protocol = "https:";
+      }
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-131092423-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-131092423-2");
+    </script>
+    <script src="/js/raw/plain/nav.js" charset="utf-8" defer></script>
+    <!--<script src="https://koalaknightmi-bible-quiz2-1.glitch.me/js/lib/socket.io.js" charset="utf-8" defer></script>
+    <script src="/js/raw/plain/log.js" charset="utf-8" defer></script>
+    <script src="/js/raw/plain/addlogin.js" charset="utf-8" defer></script>
+    <script src="/js/raw/plain/login.js" charset="utf-8" defer></script>
+    
+    <script src="/js/raw/plain/offline.js" charset="utf-8" defer></script>
+     import the webpage's client-side javascript file 
+      <script src="/js/client.js" defer></script>-->
+  </head>
+  <body>
+    <header id="nav">
+      <div id="normal-nav">
+        <button style="width:50px;height:20px;" id="navbtn">
+          <i class="material-icons md-24" style="color:black;font-size:30px;"
+            >menu</i
+          >
+        </button>
+      </div>
+      <div id="moble-nav">
+        <button style="width:100%;" id="navbtn">
+          <i class="material-icons md-24" style="color:black;font-size:30px;"
+            >menu</i
+          >
+        </button>
+      </div>
+    </header>
+    <side-nav id="mySidenav">
+      <div id="subnav" style="display:none"></div>
+    </side-nav>
+    <main class="page" id="home">
+      <div id="status"></div>
+      <div id="k-updates">
+        <div id="u-title">
+          <h4>Updates</h4>
+        </div>
+        <div class="k-update" id="update-4">
+          <section class="kcss-card-default-wrapper">
+            <div class="kcss-card-default" style="width:100%">
+              <div class="kcss-card-default-header">
+                <h3 class="kcss-card-default-header-text">update 1.4</h3>
+              </div>
+              <div class="kcss-card-default-content">
+                <p class="kcss-card-default-content-text">
+                  Not a huge update but first one in a while
+                </p>
+                <ul
+                  style="text-align:left;list-style:circle;padding-left:15px;"
+                >
+                  <li>
+                    punctuation is back in typequizzing when typing (not while clicking the buttons yet though).
+                  </li>
+                  <li>bug fixes and some improvements for performance</li>
+                  <li>
+                    minor updates to the scripture portion and bug fixes
+                  </li>
+                  <li>removed grammer search button</li>
+                  <li> moved the user images to external storage</li>
+                </ul>
+                <h2 class="kcss-card-default-content-text">Coming Soon...</h2>
+                <ol
+                  style="text-align:left;list-style:circle;padding-left:15px;"
+                >
+                  <li>study challenges</li>
+                  <li>grammer searches</li>
+                  <li>online quizzing</li>
+                  <li>mini games</li>
+                  <li>flash cards for everything</li>
+                  <li>teams</li>
+                  <li>team v team quizzing</li>
+                  <li>online quiz offs</li>
+                  <li>study logging and recording</li>
+                  <li>
+                    head to head stuff including typequizzing and diffrent
+                    minigames
+                  </li>
+                  <li>support for older browsers</li>
+                  <li>messages and friend requests</li>
+                  <li>blanks and prompterizers auto timed</li>
+                  <li>team studying tools</li>
+                  <li>season avg collection and data</li>
+                  <li>a help page</li>
+                  <li>bug fixes</li>
+                  <li>
+                    (note this list is not in any order and is actually pretty
+                    random)
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="k-update" id="update-3">
+          <section class="kcss-card-default-wrapper">
+            <div class="kcss-card-default" style="width:100%">
+              <div class="kcss-card-default-header">
+                <h3 class="kcss-card-default-header-text">update 1.3</h3>
+              </div>
+              <div class="kcss-card-default-content">
+                <h2 class="kcss-card-default-content-text">
+                  Just a few additions such as:
+                </h2>
+                <ul
+                  style="text-align:left;list-style:circle;padding-left:15px;"
+                >
+                  <li>
+                    I added a concordinance + the concordinace is searchable
+                  </li>
+                  <li>blanks and prompterizer now realesed</li>
+                  <li>
+                    working on the online quizzing hopfully will be done by the
+                    end of this month
+                  </li>
+                  <li>
+                    I re wrote the typequizzing script to make it repeat the
+                    same verse less
+                  </li>
+                </ul>
+                <h2 class="kcss-card-default-content-text">Coming Soon...</h2>
+                <ol
+                  style="text-align:left;list-style:circle;padding-left:15px;"
+                >
+                  <li>grammer searches</li>
+                  <li>fixes to the puctuation disapearing in typquizzing</li>
+                  <li>online quizzing</li>
+                  <li>mini games</li>
+                  <li>flash cards for everything</li>
+                  <li>teams</li>
+                  <li>team v team quizzing</li>
+                  <li>online quiz offs</li>
+                  <li>study logging and recording</li>
+                  <li>
+                    head to head stuff including typequizzing and diffrent
+                    minigames
+                  </li>
+                  <li>support for older browsers</li>
+                  <li>messages and friend requests</li>
+                  <li>blanks and prompterizers auto timed</li>
+                  <li>team studying tools</li>
+                  <li>season avg collection and data</li>
+                  <li>a help page</li>
+                  <li>bug fixes</li>
+                  <li>
+                    (note this list is not in any order and is actually pretty
+                    random)
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="k-update" id="update-2">
+          <section class="kcss-card-default-wrapper">
+            <div class="kcss-card-default" style="width:100%">
+              <div class="kcss-card-default-header">
+                <h3 class="kcss-card-default-header-text">update 1.2</h3>
+              </div>
+              <div class="kcss-card-default-content">
+                <p class="kcss-card-default-content-text">
+                  Pretty big update here is what I added and changed
+                </p>
+                <ul
+                  style="text-align:left;list-style:circle;padding-left:15px;"
+                >
+                  <li>
+                    as you may have noticed I moved the navagation bar for ease
+                    and so I can add more buttons to it
+                  </li>
+                  <li>bug fixes and some improvements for performance</li>
+                  <li>
+                    added titles to more things still not finished yet though
+                  </li>
+                  <li>fixed the computer reading of the scripture portion</li>
+                  <li style="color:red;">
+                    biggest one: I have made it so u can now pick which season
+                    you will be studying
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="k-update" id="update-1">
+          <section class="kcss-card-default-wrapper">
+            <div class="kcss-card-default" style="width:100%">
+              <div class="kcss-card-default-header">
+                <h3 class="kcss-card-default-header-text">update 1.0</h3>
+              </div>
+              <div class="kcss-card-default-content">
+                <p class="kcss-card-default-content-text">things i added</p>
+                <ul
+                  style="text-align:left;list-style:circle;padding-left:15px;"
+                >
+                  <li>
+                    in typequizzing hitting the enter button will start a quiz
+                  </li>
+                  <li>bug fixes and some improvements for performance</li>
+                  <li>working on adding titles everywhere</li>
+                  <li>working on helps</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <!--<div id = "k-announcements">
+        <div id = "a-title">
+          <h4>Announcements</h4>
+        </div>
+        <div class = "k-update" id = "a-1">
+          <section class = "kcss-card-default-wrapper">
+            <div class = "kcss-card-default" style = "width:100%">
+                <div class = "kcss-card-default-header">
+                    <h3 class = "kcss-card-default-header-text"> update 1.0</h3>
+                </div>
+                <div class = "kcss-card-default-content">
+                <p class = "kcss-card-default-content-text">
+                  
+                  </p>
+                  
+                </div>
+            </div>
+        </section>
+        </div>
+      </div>-->
+    </main>
+    <footer class="kcss-main-footer">
+      <span class="kcss-copyright"
+        ><a href="https://repl.it/@Koalaknightmi" target="_blank"
+          >Copyright &copy; 2018 Koalastrikermi/koalaknightmi</a
+        ></span
+      >
+    </footer>
+  </body>
+</html>

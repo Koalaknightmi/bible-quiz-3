@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+
+<html>
+	{{> head }}
+  <link rel="stylesheet" href="https://koalaknightmi-bible-quiz2-1.glitch.me/css/team.css">
+	<body>
+    {{> nav }}
+    <main class ="page">
+        <div id = "profile-wid">
+          <div id = "profile-top">
+             <div id = "profile-img-wrap">
+                  <img src = {{userdata.profileIMG}}>
+                  {{#if userdata.online}}
+                      <div style = "background:green" id = "offon" title = "user status"></div>               
+                  {{else}}
+                      <div style = "background:red" id = "offon" title = "user status"></div>               
+                  {{/if}}
+              </div>
+              <div id = "p-username">
+                  <a><b style = "color:{{userdata.nameCOl}}" id = "name-b">{{userdata.userName}}</b></a>
+                  <b class = "state-b">{{userdata.state}}</b>
+                   {{#if userdata.isAdmin}}
+                    <img class = "admin-logo" width = "20" src = "https://cdn.glitch.com/96dd1b57-087c-49b9-8d7a-02863bc2f271%2Fadmin%20logo.png?v=1560458428292">
+                   {{/if}}
+              </div>
+              <div id = "p-rating">
+                  <img src = "https://cdn.glitch.com/96dd1b57-087c-49b9-8d7a-02863bc2f271%2Ftypequizzing%20logo.png?v=1560458258815" id = "rating-img">
+                  <b id = "rating-b">{{userdata.ratings.openOnline.rt}}</b>
+              </div>
+              <div id = "loggedin">
+                <p>last login: <b id = "lastlogin">{{userdata.lastLogin}}</b></p>
+              </div>
+          </div>
+          <div id = "profile-widgets" class = "row">
+            <div class = "p-widget kcss-col-4" id = "profile-friends">
+              <h3 class = "title" id = "friends-title">Friends</h3>
+              {{#each friendsdata}}
+              <div id = "friend-a">
+                <div class = "friend">
+                <a class = "f-username" style = "color:{{this.nameCOl}}" href = "/user/{{this.userName}}">{{this.userName}}</a>
+                <b class = "state-b f-state">{{this.state}}</b>
+                 {{#if this.isAdmin}}
+                    <img class = "admin-logo" width = "20" src = "https://cdn.glitch.com/96dd1b57-087c-49b9-8d7a-02863bc2f271%2Fadmin%20logo.png?v=1560458428292">
+                 {{/if}}
+              </div>
+              </div>
+              {{/each}}
+            </div>
+            <div class = "p-widget kcss-col-8" id = "tournaments">
+              <h3 class = "title" id = "tournments-participated-in">
+                tournaments
+              </h3>
+              comming soon
+            </div>
+            <div class = "p-widget kcss-col-5" id = "typquizzing-scores">
+              <h3 class = "title" id = "tqs-title">typquizzing scores</h3>
+              <div id = "scores-a">
+                <table cellspacing = "0px">
+                  <thead>
+                      <tr>
+                          <th>chapter</th>
+                          <th>score</th>
+                          <th>date</th>
+                          <th>type</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {{#each scoresdata}}
+                      <tr class = "score">
+                          <td class = "s-ch">{{this.ch}}</td>
+                          <td><b class = "score-b">{{this.score}}</b></td>
+                          <td><h4 class = "date">{{this.createdAt}}</h4></td>
+                          <td class = "s-type">{{this.type}}</td>
+                      </tr>
+                    {{/each}}
+                  </tbody>
+              </table>
+             </div>
+            </div>
+            <div class = "p-widget kcss-col-3" id = "matches">
+              <h3 class = "title" id = "matches-title">matches</h3>
+              comming soon
+            </div>
+            <div class = "p-widget kcss-col-4" id = "stats">
+             <h3 class = "title" id = "stats-title">stats</h3>
+              <hr>
+              <div id = "bst-quote-times">
+                
+              </div>
+              <div id = "best-ch-scores">
+                <table cellspacing = "0px">
+                  <thead>
+                      <tr>
+                        <th colspan="5">top typequizzing scores</th>
+                    </tr>
+                      <tr>
+                          <th>chapter</th>
+                          <th>score</th>
+                          <th>date</th>
+                          <th>type</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {{#each ts}}
+                      {{#each this}}
+                        <tr>
+                          <td>{{this.ch}}</td>
+                          <td>{{this.score}}</td>
+                          <td>{{this.createdAt}}</td>
+                          <td>{{this.type}}</td>
+                        </tr>
+                      {{/each}}
+                    {{/each}}
+                  </tbody>
+              </table>
+              </div>
+             
+              <div id = "tournament-rating">
+                
+              </div>
+              <div id = "matches-raiting">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+</main>
+		<footer class="kcss-main-footer"><span class="kcss-copyright"><a href="https://repl.it/@Koalaknightmi" target="_blank">Copyright &copy; 2018 Koalastrikermi/koalaknightmi</a></span></footer>
+	</body>
+</html>

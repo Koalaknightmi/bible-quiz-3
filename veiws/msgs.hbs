@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+
+<html>
+	{{> head }}
+  <link rel="stylesheet" href="https://koalaknightmi-bible-quiz2-1.glitch.me/css/user.css">
+	<body>
+    {{> nav }}
+    <main class ="page">
+        <div id = "msg-btns">
+         {{#each scoresdata}}
+           <button class = "msgbtn">{{this.username}}</button>
+          {{/each}}
+        </div>
+    </main>
+		<footer class="kcss-main-footer"><span class="kcss-copyright"><a href="https://repl.it/@Koalaknightmi" target="_blank">Copyright &copy; 2018 Koalastrikermi/koalaknightmi</a></span></footer>
+    <script>
+    var btns = document.querySelectorAll("msgbtn")
+    btns.addEventListener("click",function(e){
+      var user = this.innerText
+      fetch("https://koalaknightmi-bible-quiz2-1.glitch.me/msgfrom/"+user,
+    {
+    	method: "GET",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data)
+    })
+    .catch(error => console.warn(error));
+    </script>
+	</body>
+</html>

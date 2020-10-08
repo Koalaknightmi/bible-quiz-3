@@ -1,0 +1,33 @@
+{
+  "name": "Nazarene Bible Quizzing Online",
+  "short_name": "NBQO",
+  "icons": [{
+    "src": "https://cdn.glitch.com/7942a189-4df2-4068-8077-3c39a76c0db1%2FNBQO%20logo.jpg?v=1584726920335",
+      "sizes": "128x128",
+      "type": "image/png"
+    }, {
+      "src": "https://cdn.glitch.com/7942a189-4df2-4068-8077-3c39a76c0db1%2FNBQO%20logo.jpg?v=1584726920335",
+      "sizes": "144x144",
+      "type": "image/png"
+    }, {
+      "src": "https://cdn.glitch.com/7942a189-4df2-4068-8077-3c39a76c0db1%2FNBQO%20logo.jpg?v=1584726920335",
+      "sizes": "152x152",
+      "type": "image/png"
+    }, {
+      "src": "https://cdn.glitch.com/7942a189-4df2-4068-8077-3c39a76c0db1%2FNBQO%20logo.jpg?v=1584726920335",
+      "sizes": "192x192",
+      "type": "image/png"
+    }, {
+      "src": "https://cdn.glitch.com/7942a189-4df2-4068-8077-3c39a76c0db1%2FNBQO%20logo.jpg?v=1584726920335",
+      "sizes": "256x256",
+      "type": "image/png"
+    }, {
+      "src": "https://cdn.glitch.com/7942a189-4df2-4068-8077-3c39a76c0db1%2FNBQO%20logo.jpg?v=1584726920335",
+      "sizes": "512x512",
+      "type": "image/png"
+    }],
+  "start_url": "/html/index.html",
+  "display": "standalone",
+  "background_color": "#941b1b",
+  "theme_color": "#941b1b"
+}

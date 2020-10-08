@@ -1,0 +1,33 @@
+.memory-verse-m{
+  padding:2px;
+  background:rgb(28, 177, 28)
+}
+.memory-verse-s{
+  padding:2px;
+  background:rgb(174, 177, 28)
+}
+.uniqueword{
+  color:crimson;
+}
+.dblword{
+  color:#ff9800;
+}
+b.uniqueword::selection{
+  color: rgb(0, 17, 255)!Important;
+} 
+b.dblword::selection{
+  color:green!Important;
+} 
+main{
+  /*margin:10px;
+  padding:5px;*/
+}
+.verse{
+  padding:2px;
+}
+.dreams {
+    font-size: 20px;
+}
+.membegin:before{
+  content:"> "
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <title>Nazarene Bible Quizzing Online</title>
+    <meta
+      name="description"
+      content="a online bible quizzing website using the nazarene style of quizzing"
+    />
+    <meta
+      name="keywords"
+      content="bible, quizzing, bible quiz, nazarene, nazarene bible quizzing online"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon.ico"
+    />
+    <link
+      rel="mask-icon"
+      href="/images/safari-pinned-tab.svg"
+      color="#941b1b"
+    />
+    <meta name="msapplication-TileColor" content="#941b1b" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta
+      name="apple-mobile-web-app-title"
+      content="Nazarene Bible Quizzing Online"
+    />
+    <meta name="theme-color" content="#941b1b" />
+    <link rel="stylesheet" href="/css/scriptureport.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script>
+      if (location.protocol !== "https:") {
+        location.protocol = "https:";
+      }
+    </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131092423-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-131092423-2');
+</script>
+    <script src="/js/raw/plain/nav.js" charset="utf-8" defer></script><!--<script src="/js/raw/plain/log.js" charset="utf-8" defer></script>
+    <script src="/js/raw/plain/addlogin.js" charset="utf-8" defer></script>
+    <script src="/js/raw/plain/login.js" charset="utf-8" defer></script>
+    
+    <script src="/js/raw/plain/offline.js" charset="utf-8" defer></script>
+    <script
+      src="/js/raw/plain/scriptureportion2.js"
+      charset="utf-8"
+      defer
+    ></script>-->
+  </head>
+  <body>
+        <header id="nav">
+      <div id="normal-nav">
+        <button style="width:50px;height:20px;" id="navbtn">
+          <i class="material-icons md-24" style="color:black;font-size:30px;">menu</i>
+        </button>
+      </div>
+      <div id="moble-nav">
+        <button style="width:100%;" id="navbtn">
+          <i class="material-icons md-24" style="color:black;font-size:30px;"
+            >menu</i
+          >
+        </button>
+      </div>
+    </header>
+    <side-nav id="mySidenav">
+      <div id = "subnav" style = "display:none">
+        
+      </div>
+    </side-nav>
+    <main style="text-align:left;" class="page" id="sp">
+      <div id="status"></div>
+      <br />
+      <div id="sp-settings">
+        <div id="ve-set">
+          <input id="s-verse-h" type="checkbox" name="s-mem" checked />
+          <label for="s-mem">highlight single memory verses</label>
+          <input type="color" id="s-m-c" name="s-m-c" value="#AEB11C" />
+          <label for="s-m-c">single memory color</label><br />
+          <input id="m-verse-h" type="checkbox" name="m-mem" checked />
+          <label for="m-mem">highlight multiple memory verses</label>
+          <input type="color" id="m-m-c" name="m-m-c" value="#1CB11C" />
+          <label for="m-m-c">single memory color</label><br />
+        </div>
+        <div id="un-set">
+          <input id="u-word" type="checkbox" name="u-word" checked />
+          <label for="u-word">highlight unique words</label>
+          <input type="color" id="u-w-c" name="u-w-c" value="#c62828" />
+          <label for="u-w-c">unique word color</label><br />
+          <input id="d-word" type="checkbox" name="d-word" checked />
+          <label for="d-word">highlight double words</label>
+          <input type="color" id="d-w-c" name="d-w-c" value="#ff9800" />
+          <label for="d-w-c">double word color</label><br />
+        </div>
+        <div id="ch-set">
+          <label for="ch-select">chapters:</label>
+          <select id="ch-select">
+          </select>
+        </div>
+        <button id="s-audio-btn" class="kcss-btn-blue kcss-ripple-btn kcss-btn">
+          <img
+            src="https://cdn.glitch.com/eb5b036c-82b3-497e-9d05-ce2a5a9d85e1%2Fspeaker.png?v=1560183263971"
+          />
+        </button>
+      </div>
+      <section class="dreams">
+        <div id="dreams">
+          <div class="kcss-loader-1"></div>
+        </div>
+      </section>
+      <br />
+      <br />
+    </main>
+    <script src="/js/lib/resvoice.js"></script>
+  </body>
+</html>

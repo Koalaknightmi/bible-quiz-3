@@ -1,0 +1,251 @@
+#profile-top {
+  padding: 20px;
+  height: 24%;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+#profile-wid {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+#profile-img-wrap img {
+  width: 50px;
+  height: 50px;
+  float: left;
+  padding-bottom: 0px;
+  margin: 0px;
+}
+
+#p-username {
+  float: left;
+  font-size: 15px;
+  padding: 5px;
+  margin-left: 5px;
+}
+
+#p-username a {
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+#p-rating {
+  font-size: 15px;
+  padding: 5px;
+  margin-left: 5px;
+  float: left;
+}
+
+#loggedin {
+  float: left;
+  margin-left: 5px;
+  font-size: 15px;
+  padding:1px;
+  margin:2px;
+  display:none;
+}
+
+.state-b {
+  color: red;
+}
+
+.title {
+  border-bottom: solid grey 1px;
+}
+
+#offon {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  top: 40px;
+  left: 40px;
+  background: green;
+  padding: 0px;
+}
+
+#profile-widgets {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  height: 76%;
+  overflow-y: auto;
+  padding-top: 0px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+.p-widget {
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .14), 0 3px 3px -2px rgba(0, 0, 0, .2), 0 1px 8px 0 rgba(0, 0, 0, .12);
+  max-height: 76%;
+}
+
+#tournaments {
+  /*width:40%;*/
+}
+
+#profile-friends {
+  /*width:25%;*/
+  overflow-y: auto;
+}
+
+.friend {
+  padding: 4px;
+  border-bottom: solid grey 1px;
+}
+
+.score {
+  padding: 4px;
+  border-bottom: solid grey 1px;
+}
+
+#friends-title {
+  padding: 4px;
+}
+
+#typequizzing-scores {
+  /*width:30%;*/
+}
+
+.title {
+  padding: 4px;
+  border-bottom: solid grey 1px;
+}
+
+.score-b {
+  float: left;
+  padding: 2px;
+  margin: 0px;
+}
+
+.date {
+  float: left;
+  padding: 2px;
+  margin: 0px;
+}
+
+th,
+td {
+  border: solid .02rem black;
+  border-style: none solid solid solid;
+  margin: 0px;
+  text-align: center;
+}
+
+td tr {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+}
+
+.admin-logo {
+  width: 10px;
+}
+
+#rating-img {
+  width: 10px;
+}
+
+.friend img {
+  width: 10px
+}
+[class*="kcss-col-"] {
+  overflow-y:auto;     
+}
+@media (min-width: 1024px) {
+  #rating-img {
+    width: 20px;
+  }
+
+  .admin-logo {
+    width: 20px;
+  }
+
+  #p-username {
+    font-size: 30px;
+  }
+
+  .friend {
+    font-size: 20px;
+  }
+
+  .friend img {
+    width: 15px
+  }
+
+  #p-rating {
+    font-size: 30px;
+  }
+
+  #loggedin {
+    font-size: 30px;
+    padding: 5px;
+  }
+
+  #profile-img-wrap img {
+    width: 80px;
+    height: 80px;
+  }
+
+  #offon {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    top: 65px;
+    left: 65px;
+  }
+}
+
+@media (min-height: 680px) {
+  #profile-img-wrap img {
+    width: 125px;
+    height: 125px;
+    padding-bottom: 10px;
+    margin: 5px;
+  }
+
+  #offon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    top: 100px;
+    left: 110px;
+  }
+}
+@media (min-height: 485px) {
+  #loggedin {
+    /*float: left;*/
+    margin-left: 5px;
+    font-size: 15px;
+    padding:1px;
+    margin:2px;
+    display:inline-block;
+  }
+}
+#results{
+  text-align:left;
+}
+.res{
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+  padding:5px;
+  margin:3px;
+  background:white;
+}
+.res-title::first-letter {
+  text-transform: uppercase;
+}
+.res-title {
+  text-align:center;
+}
+.res-mentions::first-letter {
+  text-transform: uppercase;
+}
+.res-mentions {
+  text-align:center;
+}
+.res-ref{
+  font-weight:bold;
+}

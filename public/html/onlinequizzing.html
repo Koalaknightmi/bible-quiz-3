@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <title>Nazarene Bible Quizzing Online</title>
+    <meta
+      name="description"
+      content="a online bible quizzing website using the nazarene style of quizzing"
+    />
+    <meta
+      name="keywords"
+      content="bible, quizzing, bible quiz, nazarene, nazarene bible quizzing online"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon.ico"
+    />
+    <link
+      rel="mask-icon"
+      href="/images/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta
+      name="apple-mobile-web-app-title"
+      content="Nazarene Bible Quizzing Online"
+    />
+    <meta name="theme-color" content="#fafafa" />
+    <!--  <link rel="preload" href="/gethebrews" as="text">
+      import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/onlinequizzing.css" />
+    <script>
+      if (location.protocol !== "https:") {
+        location.protocol = "https:";
+      }
+    </script><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131092423-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-131092423-2');
+</script>
+    <!-- <script src="/js/lib/socket.io-p2p.js" charset="utf-8" defer></script>
+    <script src="/js/lib/socket.io.js" charset="utf-8" defer></script>
+    <script src="/js/raw/plain/log.js" charset="utf-8" defer></script>
+    <script src="/js/raw/plain/fade.js" charset="utf-8" defer></script>
+    <script src="/js/raw/plain/addlogin.js" charset="utf-8" defer></script>
+    <script src="/js/raw/plain/login.js" charset="utf-8" defer></script>
+    <script src="/js/raw/plain/nav.js" charset="utf-8" defer></script>
+    <script src="/js/raw/plain/offline.js" charset="utf-8" defer></script>
+    <script
+      src="/js/raw/plain/onlinequizzing.js"
+      charset="utf-8"
+      defer
+    ></script>
+    import the webpage's client-side javascript file 
+      <script src="/js/client.js" defer></script>--><script src="/js/raw/plain/nav.js" charset="utf-8" defer></script>
+  </head>
+  <body>
+    <header id="nav">
+      <div id="normal-nav">
+        <button style="width:50px;height:20px;" id="navbtn">
+          <i class="material-icons md-24" style="color:black;font-size:30px;"
+            >menu</i
+          >
+        </button>
+      </div>
+      <div id="moble-nav">
+        <button style="width:100%;" id="navbtn">
+          <i class="material-icons md-24" style="color:black;font-size:30px;"
+            >menu</i
+          >
+        </button>
+      </div>
+    </header>
+    <side-nav id="mySidenav">
+      <div id="subnav" style="display:none"></div>
+    </side-nav>
+    <main class="page" id="home">
+      <div id="games" class="Carbonfibre kcss-col-6 kcss-col-m-6">
+        <input
+          label="search"
+          class="kcss-mm kcss-search-input"
+          style="margin:5px"
+          id="games-search"
+          type="search"
+          onkeyup="searchtable('games-search','g-table-b',3);"
+        />
+        <table id="g-table">
+          <thead id="g-table-h">
+            <tr>
+              <th>type</th>
+              <th>name</th>
+              <th>creator</th>
+              <th>quiz master</th>
+              <th>average rank</th>
+              <th>players</th>
+            </tr>
+          </thead>
+          <tbody id="g-table-b">
+            <tr>
+              <td>coming soon or maybe not so soon</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="g-info" class="kcss-col-6 kcss-col-m-6 Carbonfibre">
+        <div id = "g-i">
+          <div
+            style="width:100%;background:lightgrey;height:50vh;"
+            id="g-info-img-wrap"
+          >
+            <button
+              style="float:left"
+              id="join-game-btn"
+              class="btn kcss-btn kcss-ripple-btn kcss-btn-green"
+            >
+              join
+            </button>
+            <button
+              style="float:right"
+              id="create-game-btn"
+              class="btn kcss-btn kcss-ripple-btn kcss-btn-blue"
+            >
+              create +
+            </button>
+            <img
+              id="g-i-img"
+              style=""
+              src="/images/typequizzing logo.png"
+              alt="?"
+            />
+          </div>
+          <div class="kcss-col-4 g-i-b" id="g-i-it">type</div>
+          <div class="kcss-col-4 g-i-b" id="g-i-iusername">creator</div>
+          <div class="kcss-col-4 g-i-b" id="g-i-iqm">quiz master</div>
+          <div class="kcss-col-4 g-i-b" id="g-i-type">Open Team v Team</div>
+          <div class="kcss-col-4 g-i-b" id="g-i-username">no one 2</div>
+          <div class="kcss-col-4 g-i-b" id="g-i-qm">no one 3</div>
+          <div class="kcss-col-6 g-i-b" id="g-i-iar">average rating</div>
+          <div class="kcss-col-6 g-i-b" id="g-i-ipnum">number of players</div>
+          <div class="kcss-col-6 g-i-b" id="g-i-ar">1000</div>
+          <div class="kcss-col-6 g-i-b" id="g-i-pnum">0</div>
+          <div class="kcss-col-12 g-i-b" id="g-i-plrs">
+            <table id="g-i-table">
+              <thead id="g-i-table-h">
+                <tr>
+                  <th colspan="3">team 1</th>
+                  <th colspan="1">vs</th>
+                  <th colspan="3">team 2</th>
+                </tr>
+                <tr>
+                  <th>username</th>
+                  <th>rank</th>
+                  <th>score</th>
+                  <th></th>
+                  <th>username</th>
+                  <th>rank</th>
+                  <th>score</th>
+                </tr>
+              </thead>
+              <tbody id="g-i-table-b"></tbody>
+            </table>
+          </div>
+        </div>
+        <div id = "g-picker" style="width:100%;background:lightgrey;height:50vh;display:none">
+          Game Name: <input id = "g-picker-n" value = "game name">
+          <br>
+          Game Type:<select id = "type-pick">
+            <option value = "Open Team v Team">Open Team v Team</option>
+          </select>
+          <button
+              style="float:right"
+              id="c-btn"
+              class="btn kcss-btn kcss-ripple-btn kcss-btn-blue"
+            >
+              create +
+            </button>
+        </div>
+      </div>
+    </main>
+    <main class="page" style="display:none" id="game">
+      <div id="team1">
+        <table id="ig-i-table">
+          <thead id="ig-i-table-h">
+            <tr>
+              <th>username</th>
+              <th>rank</th>
+              <th>score</th>
+            </tr>
+          </thead>
+          <tbody id="ig-i-table-b1"></tbody>
+        </table>
+      </div>
+      <div id="team2">
+        <table id="ig-i-table2">
+          <thead id="ig-i-table-h2">
+            <tr>
+              <th>username</th>
+              <th>rank</th>
+              <th>score</th>
+            </tr>
+          </thead>
+          <tbody id="ig-i-table-b2"></tbody>
+        </table>
+      </div>
+      <div id="scoreboard">
+        <table id="scoresheet"></table>
+      </div>
+      <div id="jump-stuff">
+        <audio style="display:none"></audio>
+        <button
+          class="btn kcss-btn kcss-ripple-btn kcss-btn-green"
+          id="start-btn"
+          style = "display:none"
+        >
+          start
+        </button>
+      </div>
+    </main>
+    <main class="page" style="display:none" id="ingame">
+      <div id="toppart">
+        <div id="team12">
+          <table id="ig-i-table22">
+            <thead id="ig-i-table-h22">
+              <tr>
+                <th>username</th>
+                <th>rank</th>
+                <th>score</th>
+              </tr>
+            </thead>
+            <tbody id="ig-i-table-b12"></tbody>
+          </table>
+        </div>
+        <div id="team22">
+          <table id="ig-i-table222">
+            <thead id="ig-i-table-h222">
+              <tr>
+                <th>username</th>
+                <th>rank</th>
+                <th>score</th>
+              </tr>
+            </thead>
+            <tbody id="ig-i-table-b22"></tbody>
+          </table>
+        </div>
+      </div>
+      <div id = "qmstuff">
+        <div id="scoreboard2">
+          <table id="scoresheet2"></table>
+        </div>
+        <div id = "questions">
+          
+        </div>
+        <div id = "quizzermanagment">
+          <table id="qmanagment">
+          <thead>
+            <tr>
+              <th>quizzer</th>
+              <th>active</th>
+              <th>jumped</th>
+              <th>score</th>
+              <th>remove</th>
+            </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      
+      <button
+          class="btn kcss-btn kcss-ripple-btn kcss-btn-green"
+          id="jump-btn"
+        >
+          jump
+        </button>
+        <audio style="display:none"></audio>
+    </main>
+  </body>
+</html>

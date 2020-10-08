@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <title>Nazarene Bible Quizzing Online</title>
+    <meta
+      name="description"
+      content="a online bible quizzing website using the nazarene style of quizzing"
+    />
+    <meta
+      name="keywords"
+      content="bible, quizzing, bible quiz, nazarene, nazarene bible quizzing online"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon.ico"
+    />
+    <link
+      rel="mask-icon"
+      href="/images/safari-pinned-tab.svg"
+      color="#941b1b"
+    />
+    <meta name="msapplication-TileColor" content="#941b1b" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta
+      name="apple-mobile-web-app-title"
+      content="Nazarene Bible Quizzing Online"
+    />
+    <meta name="theme-color" content="#941b1b" />
+    <!--  <link rel="preload" href="/gethebrews" as="text">
+    import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/blanks.css" />
+    <script>
+      if (location.protocol !== "https:") {
+        location.protocol = "https:";
+      }
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131092423-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-131092423-2');
+</script>
+    <script src="/js/raw/plain/nav.js" charset="utf-8" defer></script><!--<script src="https://unpkg.com/compromise"></script>
+    <script src="/js/raw/plain/localsave.js" charset="utf-8" defer></script>
+    <script src="/js/raw/plain/log.js" charset="utf-8" defer></script>
+    <script src="/js/raw/plain/addlogin.js" charset="utf-8" defer></script>
+    <script src="/js/raw/plain/login.js" charset="utf-8" defer></script>
+   
+    <script src="/js/raw/plain/offline.js" charset="utf-8" defer></script>
+    <script src="/js/raw/plain/blanks.js" charset="utf-8" defer></script> -->
+  </head>
+
+  <body>
+    <header id="nav">
+      <div id="normal-nav">
+        <button style="width:50px;height:20px;" id="navbtn">
+          <i class="material-icons md-24" style="color:black;font-size:30px;"
+            >menu</i
+          >
+        </button>
+      </div>
+      <div id="moble-nav">
+        <button style="width:100%;" id="navbtn">
+          <i class="material-icons md-24" style="color:black;font-size:30px;"
+            >menu</i
+          >
+        </button>
+      </div>
+    </header>
+    <side-nav id="mySidenav">
+      <div id="subnav" style="display:none"></div>
+    </side-nav>
+    <main class="page" id="quizzing">
+      <div id="status"></div>
+      <div id="settings">
+        <div id="ch-set">
+          <label for="ch-select">chapters:</label>
+          <select id="ch-select"> </select>
+          <br />
+          <label for="ch-type">type of challenge:</label>
+          <select id="ch-type">
+            <option value="b">Blanks</option>
+            <option value="p">prompterizer</option>
+             </select
+          ><br />
+          <label for="ch-lvl"
+            >if your doing blanks how hard do you want them to be:</label
+          >
+          <select id="ch-lvl">
+            <option value="1">lvl 1</option>
+            <option value="2">lvl 2</option>
+            <option value="3">lvl 3</option>
+            <option value="4">lvl 4</option>
+            <option value="5">lvl 5</option>
+            <option value="6">lvl 6</option>
+            <option value="7">lvl 7</option>
+            <option value="8">lvl 8</option>
+            <option value="9">lvl 9</option>
+            <option value="10">lvl 10</option>
+            <option value="11">lvl 11</option>
+            <option value="12">lvl 12</option>
+          </select>
+          <br />
+          <button
+            id="type-start-btn"
+            class="kcss-btn-green kcss-ripple-btn kcss-btn"
+          >
+            start
+          </button>
+        </div>
+      </div>
+      <div id="t-q">
+        <h2 id="refrence" style = "border-bottom:2px solid black;">hebrews 1:1</h2>
+        <h2 id="timer"></h2>
+        <ol id="verse" style = "text-align:left"></ol>
+        <!--<button
+          id="type-end-btn"
+          style="position:fixed;bottom:40px;width:100%;height:40px;left:0px;"
+          class="kcss-btn-green kcss-ripple-btn kcss-btn"
+        >
+          Done
+        </button>-->
+      </div>
+    </main>
+
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=WNSItqVA"></script>
+  </body>
+</html>

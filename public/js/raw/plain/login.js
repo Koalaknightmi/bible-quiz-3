@@ -462,7 +462,6 @@ lform.addEventListener("submit", function(e) {
 rform.addEventListener("submit", function(e) {
   e.preventDefault();
   var password = document.getElementById("password-r");
-  var email = document.getElementById("email-r");
   var state = document.getElementById("state");
   var fusername = document.getElementById("username-r");
   if (password.value.length < 6) {
@@ -476,7 +475,6 @@ rform.addEventListener("submit", function(e) {
       "register",
       {
         name: fusername.value,
-        email: email.value,
         pass: window.btoa(hash(password.value)),
         state: state.value.toLowerCase()
       },

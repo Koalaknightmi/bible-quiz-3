@@ -1,4 +1,7 @@
 var season = localStorage.playerseason ? localStorage.playerseason : "matthew";
+if(!localStorage.playerseason){
+  localStorage.playerseason = "matthew"
+}
 
 var chlist = {
   hebrews: {

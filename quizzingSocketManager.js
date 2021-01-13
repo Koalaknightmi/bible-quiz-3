@@ -6,11 +6,27 @@ const Player = require("./player");
 
 exports.quizzingSocketManager = function(io) {
   var Oquizzing = io.of("/Oquizzing").on("connection", function(socket) {
+  console.log("conection")
   Oquizzing.emit("playtime", gamerooms);
+  socket.emit("getusername");
   setInterval(() => {
-    //console.log(gamerooms.koalastrikermi2.playerdata);
     socket.emit("playtime", gamerooms);
   }, 3000);
+  socket.on("userdata", function(data) {
+    let pdata = playersDATA[socket.id];
+    console.log("got username");
+    let query = db.usersref
+      .doc(data.user)
+      .get()
+      .then(user => {
+        //console.log(user.data().userName)
+        if (user.data().password === data.pass) {
+          playersDATA[socket.id] = user.data();
+          playersDATA[socket.id].rooms = { gameroom: {} };
+          //console.log(playersDATA[socket.id])
+        }
+      });
+  });
   socket.on("create match", function(data) {
     console.log(data)
     let pdata = playersDATA[socket.id];
@@ -21,16 +37,15 @@ exports.quizzingSocketManager = function(io) {
       pdata.nameCOl,
       "team1",
       "team2",
-      pdata,
       data.name
     );
+    console.log(m)
     gamerooms[pdata.userName] = m;
     playersDATA[socket.id].rooms.gameroom.name = pdata.userName;
     playersDATA[socket.id].quizmaster = true;
-    socket.join(pdata.userName, function() {
-      r = Object.keys(socket.rooms);
-      console.log(r);
-    });
+    socket.join(pdata.userName);
+    r = socket.rooms;
+    console.log(r);
     socket.emit(
       "Omatch joined",
       {
@@ -42,119 +57,17 @@ exports.quizzingSocketManager = function(io) {
   });
   socket.on("join match", function(key) {
     let pdata = playersDATA[socket.id];
-    let player = new glicko.Player({
-      defaultRating: 1000,
-      rating: pdata.ratings.openOnline.rt,
-      ratingDeviation: pdata.ratings.openOnline.rd,
-      tau: 0.5,
-      volatility: pdata.ratings.openOnline.rv
-    });
-    let ndata = {
-      user: pdata.userName,
-      state: pdata.state,
-      ratingdt: player,
-      pcol: pdata.nameCOl,
-      score: 0,
-      id: socket.id,
-      titled: pdata.titled,
-      tabr: pdata.tabr,
-      jumped: false,
-      active: true,
-      correct: 0
-    };
     playersDATA[socket.id].rooms.gameroom.name = key;
-    if (gamerooms[key].team1.playersnum <= gamerooms[key].team2.playersnum) {
-      playersDATA[socket.id].rooms.gameroom.team = 1;
-      gamerooms[key].team1.players[socket.id] = ndata;
-      gamerooms[key].team1.playersnum += 1;
-      if (gamerooms[key].team1.playersnum === 1) {
-        gamerooms[key].team1.avg = pdata.ratings.openOnline.rt;
-        gamerooms[key].scoresheet.team1.push({
-          score: 0,
-          errors: 0,
-          c: "c",
-          f: [false, false, false],
-          name: pdata.userName,
-          q: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          col: pdata.nameCOl,
-          titled: pdata.titled,
-          tabr: pdata.tabr,
-          jumped: false,
-          active: true,
-          correct: 0
-        });
-      } else {
-        gamerooms[key].team1.avg =
-          rtsum(gamerooms[key].team1.players) / gamerooms[key].team1.playersnum;
-        gamerooms[key].scoresheet.team1.push({
-          score: 0,
-          errors: 0,
-          c: "",
-          f: [false, false, false],
-          name: pdata.userName,
-          q: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          col: pdata.nameCOl,
-          titled: pdata.titled,
-          tabr: pdata.tabr,
-          jumped: false,
-          active: true,
-          correct: 0
-        });
-      }
-    } else {
-      playersDATA[socket.id].rooms.gameroom.team = 2;
-      gamerooms[key].team2.players[socket.id] = ndata;
-      gamerooms[key].team2.playersnum += 1;
-      if (gamerooms[key].team2.playersnum === 1) {
-        gamerooms[key].team2.avg = pdata.ratings.openOnline.rt;
-        gamerooms[key].scoresheet.team2.push({
-          score: 0,
-          errors: 0,
-          c: "c",
-          f: [false, false, false],
-          name: pdata.userName,
-          q: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          col: pdata.nameCOl,
-          titled: pdata.titled,
-          tabr: pdata.tabr,
-          jumped: false,
-          active: true,
-          correct: 0
-        });
-      } else {
-        gamerooms[key].team2.avg =
-          rtsum(gamerooms[key].team2.players) / gamerooms[key].team2.playersnum;
-        gamerooms[key].scoresheet.team2.push({
-          score: 0,
-          errors: 0,
-          c: "",
-          f: [false, false, false],
-          name: pdata.userName,
-          q: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          col: pdata.nameCOl,
-          titled: pdata.titled,
-          tabr: pdata.tabr,
-          jumped: false,
-          active: true,
-          correct: 0
-        });
-      }
-    }
-    gamerooms[key].playerNum++;
-    gamerooms[key].ratingavg = Math.round(
-      (rtsum(gamerooms[key].team1.players) +
-        rtsum(gamerooms[key].team2.players)) /
-        gamerooms[key].playerNum
-    );
-
+    gamerooms[key] = gamerooms[key].addPlayer(socket.id,pdata.userName,pdata,socket)
+    console.log(gamerooms)
     Oquizzing.emit("playtime", gamerooms);
-    socket.join(key, function() {
-      r = Object.keys(socket.rooms);
-      console.log(r);
-      socket.emit("Omatch joined", { u: gamerooms[key], id: socket.id }, false);
-    });
+    socket.join(key)
+    r = socket.rooms;
+    console.log(r);
+    socket.emit("Omatch joined", { u: gamerooms[key], id: socket.id }, false);
     socket.to(key).emit("player joined", { u: gamerooms[key], id: socket.id });
   });
+  /*
   socket.on("start match", function(data, n) {
     console.log(data, n);
     gamerooms[n].hidden = true;
@@ -197,7 +110,7 @@ exports.quizzingSocketManager = function(io) {
   socket.on("foul", function(quizzer) {});
   socket.on("end match", function(data) {});
   socket.on("disconnecting", function() {
-    r = Object.keys(socket.rooms);
+    r = socket.rooms;
   });
   socket.on("disconnect", function() {
     let pdata = playersDATA[socket.id];
@@ -239,6 +152,6 @@ exports.quizzingSocketManager = function(io) {
       }
       delete playersDATA[socket.id];
     }
-  });
+  });*/
 });
 };

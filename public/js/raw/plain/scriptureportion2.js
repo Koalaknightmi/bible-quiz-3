@@ -337,7 +337,7 @@ window.addEventListener("load", event => {
     return string.match(/\w+/g);
   };
   RegExp.escape = function(string) {
-    return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
+    return string.replace(/[,-\/\\^$*+?.()|[\]{}]/g, "\\$&");
   };
   var sms = [],
     mmqs = [],

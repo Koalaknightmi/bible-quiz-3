@@ -1,8 +1,25 @@
 const admin = require("firebase-admin");
-admin.initializeApp({
+/*admin.initializeApp({
   credential: admin.credential.cert(
     "bible-quiz-e1ef4-firebase-adminsdk-8xtsw-567ec07b71.json"
   ),
+  databaseURL: "https://bible-quiz-e1ef4.firebaseio.com",
+  storageBucket: "bible-quiz-e1ef4.appspot.com"
+});*/
+var serviceAccount = {
+  "type": process.env.SAtype,
+  "project_id": process.env.SAproject_id,
+  "private_key_id": process.env.SAprivate_key_id,
+  "private_key": process.env.SAprivate_key,
+  "client_email": process.env.SAclient_email,
+  "client_id": process.env.SAclient_id,
+  "auth_uri": process.env.SAauth_uri,
+  "token_uri": process.env.SAtoken_uri,
+  "auth_provider_x509_cert_url": process.env.SAauth_provider_x509_cert_url,
+  "client_x509_cert_url": process.env.SAclient_x509_cert_url
+};
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://bible-quiz-e1ef4.firebaseio.com",
   storageBucket: "bible-quiz-e1ef4.appspot.com"
 });

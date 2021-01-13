@@ -1,6 +1,6 @@
 "use strict";
-import * as annyang from "../../lib/annyang.js";
-import log from "./log";
+var annyang = window.annyang;
+var log = window.log
 var mylocalkey = "koalastrikermi-bbqo-";
 
 var localsave = function localsave(vare, gs, t) {

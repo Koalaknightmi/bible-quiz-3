@@ -78,9 +78,8 @@ sbtn.addEventListener("click", function(e) {
   //console.log(prompterizer, lvl);
   doc = window.nlp(text[chset.options.selectedIndex]);
   djson = doc.json();
-  //console.log(djson);
+  console.log(doc);
   let ver = "<li>";
-  ch = 
   started = true;
   tq.style.display = "block";
   set.style.display = "none";
@@ -119,12 +118,13 @@ sbtn.addEventListener("click", function(e) {
       }
     }
   } else {
+    console.log(djson)
     if (lvl === 1) {
       for (var i = 0; i < djson.length; i++) {
         for (var j = 0; j < djson[i].terms.length; j++) {
-          if (djson[i].terms[j].text.length > 7) {
+          if (djson[i].terms[j].text.replace(/\s+/g, "").length-1 > 7) {
             let _ssss = "";
-            for (var l = 0; l < djson[i].terms[j].text.length; l++) {
+            for (var l = 0; l < djson[i].terms[j].text.replace(/\s+/g, "").length-1; l++) {
               _ssss += "_";
             }
             djson[i].terms[j].text =
@@ -161,7 +161,7 @@ sbtn.addEventListener("click", function(e) {
             djson[i].terms[j].tags.indexOf("ProperNoun") !== -1
           ) {
             let _ssss = "";
-            for (var l = 0; l < djson[i].terms[j].text.length; l++) {
+            for (var l = 0; l < djson[i].terms[j].text.replace(/\s+/g, "").length-1; l++) {
               _ssss += "_";
             }
             djson[i].terms[j].text =
@@ -195,7 +195,7 @@ sbtn.addEventListener("click", function(e) {
         for (var j = 0; j < djson[i].terms.length; j++) {
           if (djson[i].terms[j].tags.indexOf("ProperNoun") !== -1||djson[i].terms[j].tags.indexOf("Pronoun") !== -1) {
             let _ssss = "";
-            for (var l = 0; l < djson[i].terms[j].text.length; l++) {
+            for (var l = 0; l < djson[i].terms[j].text.replace(/\s+/g, "").length-1; l++) {
               _ssss += "_";
             }
             djson[i].terms[j].text =
@@ -231,7 +231,7 @@ sbtn.addEventListener("click", function(e) {
             djson[i].terms[j].tags.indexOf("Noun") !== -1
           ) {
             let _ssss = "";
-            for (var l = 0; l < djson[i].terms[j].text.length; l++) {
+            for (var l = 0; l < djson[i].terms[j].text.replace(/\s+/g, "").length-1; l++) {
               _ssss += "_";
             }
             djson[i].terms[j].text =
@@ -268,7 +268,7 @@ sbtn.addEventListener("click", function(e) {
             djson[i].terms[j].tags.indexOf("Verb") !== -1
           ) {
             let _ssss = "";
-            for (var l = 0; l < djson[i].terms[j].text.length; l++) {
+            for (var l = 0; l < djson[i].terms[j].text.replace(/\s+/g, "").length-1; l++) {
               _ssss += "_";
             }
             djson[i].terms[j].text =
@@ -303,10 +303,10 @@ sbtn.addEventListener("click", function(e) {
           if (
             djson[i].terms[j].tags.indexOf("Noun") !== -1 ||
             djson[i].terms[j].tags.indexOf("Verb") !== -1 ||
-            djson[i].terms[j].text.length > 3
+            djson[i].terms[j].text.replace(/\s+/g, "").length-1 > 3
           ) {
             let _ssss = "";
-            for (var l = 0; l < djson[i].terms[j].text.length; l++) {
+            for (var l = 0; l < djson[i].terms[j].text.replace(/\s+/g, "").length-1; l++) {
               _ssss += "_";
             }
             djson[i].terms[j].text =
@@ -338,9 +338,9 @@ sbtn.addEventListener("click", function(e) {
     } else if (lvl === 7) {
       for (var i = 0; i < djson.length; i++) {
         for (var j = 0; j < djson[i].terms.length; j++) {
-          if (djson[i].terms[j].text.length > 7) {
+          if (djson[i].terms[j].text.replace(/\s+/g, "").length-1 > 7) {
             let _ssss = "";
-            for (var l = 0; l < djson[i].terms[j].text.length; l++) {
+            for (var l = 0; l < djson[i].terms[j].text.replace(/\s+/g, "").length-1; l++) {
               _ssss += "_";
             }
             djson[i].terms[j].text =
@@ -374,7 +374,7 @@ sbtn.addEventListener("click", function(e) {
             djson[i].terms[j].tags.indexOf("ProperNoun") !== -1
           ) {
             let _ssss = "";
-            for (var l = 0; l < djson[i].terms[j].text.length; l++) {
+            for (var l = 0; l < djson[i].terms[j].text.replace(/\s+/g, "").length-1; l++) {
               _ssss += "_";
             }
             djson[i].terms[j].text =
@@ -406,7 +406,7 @@ sbtn.addEventListener("click", function(e) {
         for (var j = 0; j < djson[i].terms.length; j++) {
           if (djson[i].terms[j].tags.indexOf("Noun") !== -1) {
             let _ssss = "";
-            for (var l = 0; l < djson[i].terms[j].text.length; l++) {
+            for (var l = 0; l < djson[i].terms[j].text.replace(/\s+/g, "").length-1; l++) {
               _ssss += "_";
             }
             djson[i].terms[j].text =
@@ -438,10 +438,10 @@ sbtn.addEventListener("click", function(e) {
         for (var j = 0; j < djson[i].terms.length; j++) {
           if (
             djson[i].terms[j].tags.indexOf("Noun") !== -1 ||
-            djson[i].terms[j].text.length > 5
+            djson[i].terms[j].text.replace(/\s+/g, "").length-1 > 5
           ) {
             let _ssss = "";
-            for (var l = 0; l < djson[i].terms[j].text.length; l++) {
+            for (var l = 0; l < djson[i].terms[j].text.replace(/\s+/g, "").length-1; l++) {
               _ssss += "_";
             }
             djson[i].terms[j].text =
@@ -476,7 +476,7 @@ sbtn.addEventListener("click", function(e) {
             djson[i].terms[j].tags.indexOf("Verb") !== -1
           ) {
             let _ssss = "";
-            for (var l = 0; l < djson[i].terms[j].text.length; l++) {
+            for (var l = 0; l < djson[i].terms[j].text.replace(/\s+/g, "").length-1-1; l++) {
               _ssss += "_";
             }
             djson[i].terms[j].text =
@@ -509,10 +509,10 @@ sbtn.addEventListener("click", function(e) {
           if (
             djson[i].terms[j].tags.indexOf("Noun") !== -1 ||
             djson[i].terms[j].tags.indexOf("Verb") !== -1 ||
-            djson[i].terms[j].text.length > 3
+            djson[i].terms[j].text.replace(/\s+/g, "").length-1 > 3
           ) {
             let _ssss = "";
-            for (var l = 0; l < djson[i].terms[j].text.length; l++) {
+            for (var l = 0; l < djson[i].terms[j].text.replace(/\s+/g, "").length-1-1; l++) {
               _ssss += "_";
             }
             djson[i].terms[j].text =
@@ -640,8 +640,14 @@ var gettextListener = function gettextListener() {
   text = this.responseText;
   text = text.replace(/([0-9]+)/g, " $1 ");
   text = text.replace(/([“”\?\.\,\:\;)(]+)/g, " $1 ");
+  text = text.replace(/([,-\/\\^$*+?.()|[\]“”"'{}])([,-\/\\^$*+?.()|[\]“”"'{}])/g,"$1 $2")
+  .trim()
+          .replace(/\s\s\s/g, " ")
+          .replace(/\s\s/g, " ")
+          .replace(/\s\s/g, " "); //cleans
   text = text.split(/(?<![0-9])1(?![0-9])/g);
   text.shift();
+  console.log(text)
 };
 /*
 var countIt = function countIt() {

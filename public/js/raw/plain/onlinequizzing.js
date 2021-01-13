@@ -6,7 +6,7 @@ var fadeOut = window.fadeOut,
   fadeIn = window.fadeIn;
 var localsave = window.localsave;
 var socket = window.socket;
-var st = io.connect("https://koalaknightmi-bible-quiz2-1.glitch.me/Oquizzing"); // the games conection
+var st = io.connect("/Oquizzing"); // the games conection
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 var mediaStreamDestination;
 
@@ -91,7 +91,7 @@ function drawteams(data) {
         td1.innerHTML =
           "<b style = 'color:red'>" +
           t1u.tabr +
-          " </b><a href = '/user/" +
+          " </b><a target=\"_blank\" href = '/user/" +
           t1u.name +
           "' style = 'color:" +
           t1u.col +
@@ -100,7 +100,7 @@ function drawteams(data) {
           "</a>";
       } else {
         td1.innerHTML =
-          "<a href = '/user/" +
+          "<a target=\"_blank\" href = '/user/" +
           t1u.name +
           "' style = 'color:" +
           t1u.col +
@@ -150,27 +150,27 @@ function drawteams(data) {
         ne2.innerHTML =
           "<td><b style = 'color:red'>" +
           n2.tabr +
-          " </b><a href = '/user/" +
-          n2.user +
+          " </b><a target=\"_blank\" href = '/user/" +
+          n2.name +
           "' style = 'color:" +
-          n2.pcol +
+          n2.col +
           "'>" +
-          n2.user +
+          n2.name +
           "</a></td><td>" +
-          n2.ratingdt.rating +
+          n2.rating.rating +
           "</td><td>" +
           n2.score +
           "</td>";
       } else {
         ne2.innerHTML =
-          "<td><a href = '/user/" +
-          n2.user +
+          "<td><a target=\"_blank\" href = '/user/" +
+          n2.name +
           "' style = 'color:" +
-          n2.pcol +
+          n2.col +
           "'>" +
-          n2.user +
+          n2.name +
           "</a></td><td>" +
-          n2.ratingdt.rating +
+          n2.rating.rating +
           "</td><td>" +
           n2.score +
           "</td>";
@@ -213,7 +213,7 @@ function drawteams(data) {
         td1.innerHTML =
           "<b style = 'color:red'>" +
           t1u.tabr +
-          " </b><a href = '/user/" +
+          " </b><a target=\"_blank\" href = '/user/" +
           t1u.name +
           "' style = 'color:" +
           t1u.col +
@@ -222,7 +222,7 @@ function drawteams(data) {
           "</a>";
       } else {
         td1.innerHTML =
-          "<a href = '/user/" +
+          "<a target=\"_blank\" href = '/user/" +
           t1u.name +
           "' style = 'color:" +
           t1u.col +
@@ -272,27 +272,27 @@ function drawteams(data) {
         ne2.innerHTML =
           "<td><b style = 'color:red'>" +
           n2.tabr +
-          " </b><a href = '/user/" +
-          n2.user +
+          " </b><a target=\"_blank\" href = '/user/" +
+          n2.name +
           "' style = 'color:" +
-          n2.pcol +
+          n2.col +
           "'>" +
-          n2.user +
+          n2.name +
           "</a></td><td>" +
-          n2.ratingdt.rating +
+          n2.rating.rating +
           "</td><td>" +
           n2.score +
           "</td>";
       } else {
         ne2.innerHTML =
-          "<td><a href = '/user/" +
-          n2.user +
+          "<td><a target=\"_blank\" href = '/user/" +
+          n2.name +
           "' style = 'color:" +
-          n2.pcol +
+          n2.col +
           "'>" +
-          n2.user +
+          n2.name +
           "</a></td><td>" +
-          n2.ratingdt.rating +
+          n2.rating.rating +
           "</td><td>" +
           n2.score +
           "</td>";
@@ -457,36 +457,36 @@ st.on("playtime", function(data) {
       if (p2 !== undefined) {
         gplayrst.innerHTML =
           "<td><a class = 'profilelink' style = 'color:" +
-          p.pcol +
+          p.col +
           "' href = '/user/" +
-          p.user +
+          p.name +
           "'>" +
-          p.user +
+          p.name +
           "</a></td><td>" +
-          p.ratingdt.rating +
+          p.rating.rating +
           "</td><td>" +
           p.score +
           "</td><td></td><td><a class = 'profilelink' style = 'color:" +
-          p2.pcol +
+          p2.col +
           "' href = '/user/" +
-          p2.user +
+          p2.name +
           "'>" +
-          p2.user +
+          p2.name +
           "</a></td><td>" +
-          p2.ratingdt.rating +
+          p2.rating.rating +
           "</td><td>" +
           p2.score +
           "</td>";
       } else {
         gplayrst.innerHTML =
           "<td><a class = 'profilelink' style = 'color:" +
-          p.pcol +
+          p.col +
           "' href = '/user/" +
-          p.user +
+          p.name +
           "'>" +
-          p.user +
+          p.name +
           "</a></td><td>" +
-          p.ratingdt.rating +
+          p.rating.rating +
           "</td><td>" +
           p.score +
           "</td><td></td><td></td><td></td><td></td>";
@@ -499,10 +499,10 @@ st.on("playtime", function(data) {
         var gplayrst = document.createElement("tr");
         console.log(p,p2)
         if(p2!==undefined){
-          gplayrst.innerHTML = "<td><a class = 'profilelink' style = 'color:" + p.pcol + "' href = '/user/" + p.user + "'>" + p.user + "</a></td><td>" + p.ratingdt.rating + "</td><td>" + p.score + "</td><td></td><td><a class = 'profilelink' style = 'color:" + p2.pcol + "' href = '/user/" + p2.user + "'>" + p2.user + "</a></td><td>" + p2.ratingdt.rating + "</td><td>" + p2.score + "</td>";
+          gplayrst.innerHTML = "<td><a class = 'profilelink' style = 'color:" + p.col + "' href = '/user/" + p.user + "'>" + p.user + "</a></td><td>" + p.rating.rating + "</td><td>" + p.score + "</td><td></td><td><a class = 'profilelink' style = 'color:" + p2.col + "' href = '/user/" + p2.user + "'>" + p2.user + "</a></td><td>" + p2.rating.rating + "</td><td>" + p2.score + "</td>";
         }
         else{
-          gplayrst.innerHTML = "<td><a class = 'profilelink' style = 'color:" + p.pcol + "' href = '/user/" + p.user + "'>" + p.user + "</a></td><td>" + p.ratingdt.rating + "</td><td>" + p.score + "</td><td></td><td></td><td></td><td></td>";
+          gplayrst.innerHTML = "<td><a class = 'profilelink' style = 'color:" + p.col + "' href = '/user/" + p.user + "'>" + p.user + "</a></td><td>" + p.rating.rating + "</td><td>" + p.score + "</td><td></td><td></td><td></td><td></td>";
         }
         g_i_s.pt.appendChild(gplayrst);
       }*/
@@ -578,36 +578,36 @@ st.on("playtime", function(data) {
       if (p2 !== undefined) {
         gplayrst.innerHTML =
           "<td><a class = 'profilelink' style = 'color:" +
-          p.pcol +
+          p.col +
           "' href = '/user/" +
-          p.user +
+          p.name +
           "'>" +
-          p.user +
+          p.name +
           "</a></td><td>" +
-          p.ratingdt.rating +
+          p.rating.rating +
           "</td><td>" +
           p.score +
           "</td><td></td><td><a class = 'profilelink' style = 'color:" +
-          p2.pcol +
+          p2.col +
           "' href = '/user/" +
-          p2.user +
+          p2.name +
           "'>" +
-          p2.user +
+          p2.name +
           "</a></td><td>" +
-          p2.ratingdt.rating +
+          p2.rating.rating +
           "</td><td>" +
           p2.score +
           "</td>";
       } else {
         gplayrst.innerHTML =
           "<td><a class = 'profilelink' style = 'color:" +
-          p.pcol +
+          p.col +
           "' href = '/user/" +
-          p.user +
+          p.name +
           "'>" +
-          p.user +
+          p.name +
           "</a></td><td>" +
-          p.ratingdt.rating +
+          p.rating.rating +
           "</td><td>" +
           p.score +
           "</td><td></td><td></td><td></td><td></td>";

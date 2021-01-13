@@ -8,7 +8,9 @@ var Jimp = require("jimp");
 var Admins = ["koalastrikermi"];
 
 exports.normalSocketManager = function(io) {
+  console.log("test")
   io.sockets.on("connection", function(socket) {
+    console.log("c1")
     let ip = socket.request.connection.remoteAddress;
     /*socket.on('message', function (data) {
     User.findOne({
@@ -47,7 +49,7 @@ exports.normalSocketManager = function(io) {
       });
     })
     socket.on("vapidPublicKey", data => {
-      socket.emit("vpk", process.env.VPU);
+      socket.emit("vpk", process.env.VAPID_PUBLIC_KEY);
     }); // listen to the event
     socket.on("register", function(data, sub) {
       console.log(ip);
@@ -84,7 +86,7 @@ exports.normalSocketManager = function(io) {
               id: 1,
               userName: data.name,
               lowerusername: data.name.toLowerCase(),
-              email: data.email,
+              //email: data.email,
               password: data.pass,
               lastLogin: new Date().toISOString(),
               isAdmin: (Admins.indexOf(data.name) > -1),
@@ -118,7 +120,38 @@ exports.normalSocketManager = function(io) {
                 userName: data.name,
                 time: 0,
                 challenge: false,
-                cameonline: Date.now()
+                cameonline: Date.now(),
+                otheronline:false,
+                data:{
+                  id: 1,
+                  userName: data.name,
+                  lowerusername: data.name.toLowerCase(),
+                  //email: data.email,
+                  password: data.pass,
+                  lastLogin: new Date().toISOString(),
+                  isAdmin: (Admins.indexOf(data.name) > -1),
+                  visitNum: 0,
+                  nameCOl: "blue",
+                  ratings: {
+                    openOnline: { rt: 1000, rd: 350, rv: 0.6 },
+                    teamsOnline: { rt: 1000, rd: 350, rv: 0.6 }
+                  },
+                  gamesPlayed: 0,
+                  online: true,
+                  tournaments: "",
+                  friends: [],
+                  monthScore: 0,
+                  allTimeScore: 0,
+                  profileIMG: data.name,
+                  state: data.state,
+                  ipAD: ip,
+                  banned: false,
+                  challenge: {
+                    active: false,
+                    opponent: "",
+                    time: 0
+                  }
+                }
               };
             //console.log('user ' + data.name + ' registered');
             socket.emit("registered", data.name);
@@ -160,7 +193,8 @@ exports.normalSocketManager = function(io) {
                 time: user.data().challenge.time,
                 challenge: user.data().challenge,
                 cameonline: Date.now(),
-                otheronline:otheronline
+                otheronline:otheronline,
+                data:user.data()
               };
             }
           });
@@ -337,9 +371,9 @@ exports.normalSocketManager = function(io) {
     })
   });*/
     socket.on("disconnect", function() {
-      console.log(onlineplayers)
+      //console.log(onlineplayers)
       if (!onlineplayers[socket.id]) return;
-      console.log(onlineplayers[socket.id].cameonline - Date.now())
+      //console.log(onlineplayers[socket.id].cameonline - Date.now())
       db.updateOne("users", onlineplayers[socket.id].userName, {
         online: false
       });

@@ -84,7 +84,7 @@ fs.readdir(testFolder, (err, files) => {
   });
 });*/
 
-if (!process.env.VPU || !process.env.VPR) {
+if (!process.env.VAPID_PUBLIC_KEY || !process.env.VAPID_PRIVATE_KEY) {
   console.log(
     "You must set the VAPID_PUBLIC_KEY and VAPID_PRIVATE_KEY " +
       "environment variables. You can use the following ones:"
@@ -94,8 +94,8 @@ if (!process.env.VPU || !process.env.VPR) {
 }
 webPush.setVapidDetails(
   "https://serviceworke.rs/",
-  process.env.VPU,
-  process.env.VPR
+  process.env.VAPID_PUBLIC_KEY,
+  process.env.VAPID_PRIVATE_KEY
 );
 const options = {
   TTL: 1 * 60 * 60 * 24
@@ -1079,7 +1079,7 @@ app.get("/team/:team", function(request, res) {
 });
 
 normalSocketManager.normalSocketManager(io);
-//quizzingSocketManager.quizzingSocketManager(io)
+quizzingSocketManager.quizzingSocketManager(io)
 
 setInterval(() => {
   //tp.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);

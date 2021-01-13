@@ -1,10 +1,10 @@
 var navbtn = document.querySelector("#navbtn");
 var ddnav = document.querySelector("#mySidenav");
 var appto = document.querySelector("#mySidenav");
-var url = "https://koalaknightmi-bible-quiz2-1.glitch.me";
+var url = "https://bible-quiz-3.koalaknightmi.repl.co";
 var url2 = "https://bible-quiz-full-browser-support.glitch.me/js/bundles/";
 var defaultscripts = [
-  "https://koalaknightmi-bible-quiz2-1.glitch.me/js/lib/socket.io.js",
+  "/js/lib/socket.io.js",
   "/js/raw/plain/log.js",
   "/js/raw/plain/addlogin.js",
   "/js/raw/plain/login.js",
@@ -55,6 +55,12 @@ var htmls = [
     name: "settings",
     styleSheet: "",
     scripts: ["/js/raw/plain/Psettings.js"]
+  },
+  {
+    path: "stats",
+    name: "stats",
+    styleSheet: "/css/stats.css",
+    scripts: ["/js/raw/plain/stats.js"]
   } /**/
   //{path:"chat",name:"chat"},
   //{path:"createquestion",name:"Create Questions"},

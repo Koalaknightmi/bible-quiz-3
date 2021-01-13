@@ -1,6 +1,6 @@
 importScripts("/js/lib/localforage.js");
 // CODELAB: Update cache names any time any of the cached filvar v = 35; change.
-var v = 37;
+var v = 38;
 var CACHE_NAME = "static-cache-v" + v;
 var DATA_CACHE_NAME = "data-cache-v" + 1;
 var DATA_POSTS = "post-catch-v1";
@@ -21,7 +21,9 @@ var jsfiles = [
   jspath + "fade.js",
   "https://unpkg.com/compromise",
   "/js/lib/resvoice.js",
-  jspath + "season.js"
+  jspath + "season.js",
+  jspath + "blanks.js",
+  jspath + "stats.js"
 ];
 var htmlfiles = [
   "/html/index.html",
@@ -30,7 +32,7 @@ var htmlfiles = [
   "/html/scripture-portion.html",
   "/html/search.html",
   "/html/settings.html",
-  //"/html/onlinequizzing.html",
+  "/html/stats.html",
   "/html/typequizzing.html",
   //"/html/voicequizzing.html",
   "/html/createquestion.html",

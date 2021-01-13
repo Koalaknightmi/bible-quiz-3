@@ -25,11 +25,13 @@ const titles = [
   }
 ];
 const db = require("./database");
-const Player = require("./player");
+const player = require("./player");
+console.log(player)
 var rtsum = function(a) {
+  console.log(a)
   var a2 = 0;
   for (var i in a) {
-    a2 += a[i].ratingdt.rating;
+    a2 += a[i].rating.rating;
   }
   return a2;
 };
@@ -51,7 +53,7 @@ function checktitlereq(user, rt) {
 }
 function checktitleloss(user, rt) {
   titles.sort(function(a, b) {
-    return b - a;
+    return b.requiredrt - a.requiredrt;
   });
   titles.forEach(function(t, i, a) {
     console.log(t);
@@ -67,8 +69,8 @@ function checktitleloss(user, rt) {
   });
 }
 var gamerooms = {};
-exports = class match {
-  constructor(type, id, creator, col, n1, n2, n, socket) {
+module.exports = class match {
+  constructor(type, id, creator, col, n1, n2, n) {
     this.type = type;
     this.id = id;
     this.creator = creator;
@@ -77,27 +79,29 @@ exports = class match {
       players: {},
       errors: 0,
       timeouts: 2,
-      playersnum: 0,
+      playerNum: 0,
       avg: 0,
       name: n1,
       coach: "",
       coachdata: {},
       collected3: false,
       collected4: false,
-      collected5: false
+      collected5: false,
+      playerswithcorrect: 0
     };
     this.team2 = {
       players: {},
       errors: 0,
       timeouts: 2,
-      playersnum: 0,
+      playerNum: 0,
       avg: 0,
       name: n2,
       coach: "",
       coachdata: {},
       collected3: false,
       collected4: false,
-      collected5: false
+      collected5: false,
+      playerswithcorrect: 0
     };
     this.scoresheet = {
       cq: 1,
@@ -124,8 +128,8 @@ exports = class match {
         19,
         20
       ],
-      team1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      team2: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      team1: [],
+      team2: [],
       team1bonuses: [
         0,
         0,
@@ -205,8 +209,8 @@ exports = class match {
     this.question = 0;
     this.hidden = false;
     this.jumped = false;
+    this.locked = true;
     this.ratingavg = 0;
-    this.playersnum = 0;
     this.qmdata = {};
     this.skdata = {};
     this.jt = "";
@@ -214,13 +218,12 @@ exports = class match {
     this.name = n;
     this.timeouttime = 120;
     this.sk = "";
-    this.socket = socket;
   }
   nextQuestion() {
     this.question += 1;
   }
   changeQM() {}
-  jumped(t, id, team) {
+  jumped(t, id, team, socket) {
     if (this.jt === "") {
       this.jt = t + this[team].players[id].timedif;
       this.jumper = this[team].players[id];
@@ -228,13 +231,13 @@ exports = class match {
       this.jt = t + this[team].players[id].timedif;
       this.jumper = this[team].players[id];
     }
-    this.socket.emit("somone jumped", this.jumper, this.question);
+    socket.to(this.creator).emit("somone jumped", this.jumper, this.question);
     this.jumper.standing = true;
   }
   setQType(type) {
     this.scoresheet.t[this.question] = type;
   }
-  correct(team) {
+  correct(team,socket) {
     this.jumper.correct(this.scoresheet.t[this.question], this.question);
     this.question += 1;
     if ((this.jumper.active = false)) {
@@ -265,7 +268,7 @@ exports = class match {
     this.jt = "";
     this.jumper.standing = false;
     this.jumper = {};
-    this.socket.emit("correct", this);
+    socket.to(this.creator).emit("correct", this);
   }
   bonus(correct, team) {
     if (correct) {
@@ -283,7 +286,7 @@ exports = class match {
       team + "sc"
     ];
   }
-  incorrect(team) {
+  incorrect(team,socket) {
     this.jumper.error(this.scoresheet.t[this.question], this.question);
     if ((this.jumper.active = false)) {
       for (var i in this[team].players) {
@@ -318,7 +321,7 @@ exports = class match {
       this.jumper = ap;
       this.jumper.standing = true;
     }
-    this.socket.emit("incorrect", this);
+    socket.to(this.creator).emit("incorrect", this);
   }
   getopposingplayer(team, seat) {
     if (team === "team1") {
@@ -349,10 +352,9 @@ exports = class match {
     return corjumpers;
   }
   sub() {}
-  timeout() {
-    let that = this;
+  timeout(socket) {
     setTimeout(function() {
-      that.socket.emit("timeout over");
+      socket.to(this.creator).emit("timeout over");
     }, 1000 * 60 * 2);
   }
   captainChange(t, newcap) {
@@ -367,42 +369,39 @@ exports = class match {
     }
     this["team" + t].players[newcap].setascocap();
   }
-  addPlayer(id, name, user) {
+  addPlayer(id, name, user, socket) {
     let that = this;
-    let query = db.usersref
-      .doc(name)
-      .get()
-      .then(user => {
-        return new Player(id, user.data());
-      })
-      .then(user => {
-        this.socket.emit("gettime");
-        if (that.type.indexOf("open") !== -1) {
-          if (that.team1.playersnum <= that.team2.playersnum) {
-            user.seat = Object.keys(that.team1.players).length;
-            that.team1.players[id] = user;
-            that.team1.playersnum++;
-            that.scoresheet.team1.push(user);
-            that.team1.avg = rtsum(that.team1.players) / that.team1.playersnum;
-            this.socket.on("time sync",function(time){
-              that.team1.players[id].timediff = time - Date.now()
-            });
-          } else {
-            user.seat = Object.keys(that.team1.players).length;
-            that.team2.players[id] = user;
-            that.scoresheet.team1.push(user);
-            that.team2.playersnum++;
-            that.team2.avg = rtsum(that.team2.players) / that.team2.playersnum;
-            this.socket.on("time sync",function(time){
-              that.team2.players[id].timediff = time - Date.now()
-            });
-          }
-        }
-        that.playersnum++;
-        that.ratingavg =
-          (rtsum(that.team1.players) + rtsum(that.team2.players)) /
-          that.playersnum;
-      });
+    let user2 = new player(user, id);
+    console.log(user2)
+    socket.to(this.creator).emit("gettime");
+    if (that.type.indexOf("Open") !== -1) {
+      if (that.team1.playerNum <= that.team2.playerNum) {
+        console.log(user2)
+        user2.seat = Object.keys(that.team1.players).length;
+        that.team1.players[id] = user2;
+        console.log(that.team1.players[id])
+        that.team1.playerNum++;
+        that.scoresheet.team1.push(user2);
+        that.team1.avg = rtsum(that.team1.players) / that.team1.playerNum;
+        socket.on("time sync",function(time){
+          that.team1.players[id].timediff = time - Date.now()
+        });
+      } else {
+        user2.seat = Object.keys(that.team1.players).length;
+        that.team2.players[id] = user2;
+        that.scoresheet.team2.push(user2);
+        that.team2.playerNum++;
+        that.team2.avg = rtsum(that.team2.players) / that.team2.playerNum;
+        socket.on("time sync",function(time){
+          that.team2.players[id].timediff = time - Date.now()
+        });
+      }
+    }
+    that.playerNum++;
+    that.ratingavg =
+      (rtsum(that.team1.players) + rtsum(that.team2.players)) /
+      that.playerNum;
+    return that
   }
   addCoach(id, name, team) {
     let that = this;
@@ -410,7 +409,7 @@ exports = class match {
       .doc(name)
       .get()
       .then(user => {
-        return new Player(id, user.data());
+        return new player(id, user.data());
       })
       .then(user => {
         if (that.type.indexOf("open") !== -1) {
@@ -430,7 +429,7 @@ exports = class match {
       .doc(name)
       .get()
       .then(user => {
-        return new Player(id, user.data());
+        return new player(id, user.data());
       })
       .then(user => {
         that.qmdata = user;
@@ -443,7 +442,7 @@ exports = class match {
       .doc(name)
       .get()
       .then(user => {
-        return new Player(id, user.data());
+        return new player(id, user.data());
       })
       .then(user => {
         that.skdata = user;
